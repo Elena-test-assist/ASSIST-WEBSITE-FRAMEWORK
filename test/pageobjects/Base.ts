@@ -1,8 +1,11 @@
 export default class Base {
     
     // define selectors using getter methods
+
+    
     public async waiForSeconds(seconds: number){
         await browser.pause(seconds * 1000)
+
     }
 
     public async setFullHDResolution(){
