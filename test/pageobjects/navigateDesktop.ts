@@ -2,13 +2,11 @@ import Base from "./Base.ts"
 import Environment from "./Environment.ts"
 class navigateDesktop extends Base {
     
-   // define selectors using getter methods
-   /* public get homepageTitle(){
-        return $('.block=Your Technical')
-    }
-    */
     public get companyButton(){
         return $('aria/Company')
+    }
+    public get BlogCategoriesButton(){
+        return $('h3=Categories')
     }
  
     public get companyTitle(){
@@ -18,6 +16,32 @@ class navigateDesktop extends Base {
     public get careersButton(){
         return $('aria/Careers')
     }
+
+    public get blogCategory2D(){
+        return $('aria/2D Design')
+    }
+
+    public get blogCategoryBackend(){
+        return $('aria/Backend')
+    }
+
+    public get blogCategoryCommunityEvents(){
+        return $('aria/Community events')
+    }
+
+    public get blogCategoryFrontend(){
+        return $('aria/Front-end')
+    }
+
+    public get blogCategoryGaming(){
+        return $('aria/Gaming')
+    }
+
+    public get blogCategoryPython(){
+        return $('aria/Python')
+    }
+
+
  
     public get careerTitle(){
         return $('p=Join us and work in a')
@@ -47,13 +71,9 @@ class navigateDesktop extends Base {
         return $('aria/Industries')
     }
 
-   /*public async loadHomePage(){
-        await browser.url('')
-        await this.homepageTitle.waitForDisplayed()
-        await expect(this.homepageTitle).toHaveText('Your Technical')
-   }*/
-
-
+    public get seeAllBlogPostsButton(){
+        return $('aria/See all blog posts')
+    }
  
  
     public async clickOnCompanyButton(){
@@ -86,7 +106,7 @@ class navigateDesktop extends Base {
     }
  
     public async clickOnBlogButton(){
-        await (await this.blogButton).waitForDisplayed
+        await this.blogButton.waitForDisplayed
         await this.blogButton.click()
     }
  
@@ -127,6 +147,48 @@ class navigateDesktop extends Base {
         await this.industriesDropdown.waitForExist()
         await expect(this.industriesDropdown).toHaveText('Industries')
     }    
+    public async clickSeeAllBlogPostsButton(){
+        await this.seeAllBlogPostsButton.waitForExist()
+        await this.seeAllBlogPostsButton.click()
+
+
+    }
+
+    public async preeSeeAllBlogPostsButton(){
+    await Environment.loadHomePage()
+    await this.clickSeeAllBlogPostsButton()
+    await Environment.checkPageSuccessfullyLoaded()
+    await (await this.blogTitle).waitForExist()
+    await expect(this.blogTitle).toHaveText('News, insights and advices from our team')
+   
+    
+    }
+    public async clickBlogCategoriesButton(){
+        await this.BlogCategoriesButton.waitForDisplayed()
+        await this.BlogCategoriesButton.click()
+    }
+    public async expandBlogCategories(){
+        await this.clickBlogCategoriesButton()
+        await this.blogCategory2D.waitForDisplayed()
+        await expect(this.blogCategory2D).toHaveText('2D Design')
+        await this.blogCategory2D.isClickable()
+        await this.blogCategoryBackend.waitForDisplayed()
+        await expect(this.blogCategoryBackend).toHaveText('Backend')
+        await this.blogCategoryBackend.isClickable()
+        await this.blogCategoryCommunityEvents.waitForDisplayed()
+        await expect(this.blogCategoryCommunityEvents).toHaveText('Community events')
+        await this.blogCategoryCommunityEvents.isClickable()
+        await this.blogCategoryFrontend.waitForDisplayed()
+        await expect(this.blogCategoryFrontend).toHaveText('Front-end')
+        await this.blogCategoryFrontend.isClickable()
+        await this.blogCategoryGaming.waitForDisplayed()
+        await expect(this.blogCategoryGaming).toHaveText('Gaming')
+        await this.blogCategoryGaming.isClickable()
+        await this.blogCategoryPython.waitForDisplayed()
+        await expect(this.blogCategoryPython).toHaveText('Python')
+        await this.blogCategoryPython.isClickable()
+
+    }
 }
 export default new navigateDesktop()
  

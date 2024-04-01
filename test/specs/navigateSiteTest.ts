@@ -3,8 +3,9 @@ import JoinOurTeam from '../pageobjects/JoinOurTeam.ts'
 import navigateDesktop from '../pageobjects/navigateDesktop.ts'
 import navigateTablet from '../pageobjects/navigateTablet.ts'
 import Subscribe from '../pageobjects/Subscribe.ts'
+import IndustriesDropdown from '../pageobjects/IndustriesDropdown.ts'
 
-describe.skip('Navigate on Assist Website on desktop', () => {
+describe('Navigate on Assist Website on desktop', () => {
     it('Loading HomePage', async () => {
         await Environment.loadHomePage()    
         await navigateDesktop.setFullHDResolution()
@@ -18,6 +19,14 @@ describe.skip('Navigate on Assist Website on desktop', () => {
         await navigateDesktop.goToBlogPage()
     })
 
+    it('Expand Categories from Blog', async()=>{
+        await navigateDesktop.expandBlogCategories()
+    })
+
+   /* it('Press See All Blog Posts button', async()=>{
+        await navigateDesktop.clickSeeAllBlogPostsButton()
+    })*/
+
     it('Expand Services menu', async()=>{
         await navigateDesktop.goToServicesMenu()
     })
@@ -25,6 +34,10 @@ describe.skip('Navigate on Assist Website on desktop', () => {
     it('Expand Industries menu', async()=>{
         await navigateDesktop.goToIndustriesMenu() 
     })
+
+   
+
+ 
 })
 
 describe.skip('Navigate on Assist Website tablet', ()=> {
@@ -52,17 +65,35 @@ describe.skip('Navigate on Assist Website tablet', ()=> {
     })
 })
 
-describe('Press Join our team button', () => {
+describe.skip('Press Join our team button', () => {
     it('Press Join our team', async()=>{
         await JoinOurTeam.clickOnJoinOurTeamButton()
     })
 })
 
-describe('Test Subscribe Form from Blog page', () => {
+describe.skip('Test Subscribe Form from Blog page', () => {
     it('Subscribe with invalid email address', async()=>{
         await Subscribe.subscribeWithInvalidEmail()
     })
 })
+
+describe.skip('Test Industries Projects', ()=>{
+    it('See Automotive Projects', async() => {
+        await IndustriesDropdown.seeAutomotiveProjects()
+    })
+
+    it('See eHealth Projects', async()=>{
+        await IndustriesDropdown.seeHealthProjects()
+    })
+
+    it('See Education Projects', async()=>{
+        await IndustriesDropdown.clickOnEducationButton()
+    })
+
+
+})
+
+
 
 
 
