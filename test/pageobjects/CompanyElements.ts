@@ -35,6 +35,29 @@ class Company extends Base{
         return $('p*=Curiosity and innovation are pre-requisites')
     }
 
+    public get joinOurTeamButton(){
+        return $('aria/Join our team')
+
+    }
+
+    public get careerTitle(){
+        return $('p=Join us and work in a')
+    }
+
+    public get companyTitle(){
+        return $('p=A solid')
+    }
+
+    public get seeAllOpenPositionsButton(){
+        return $('button=See all open positions')
+    }
+
+    public get AllPositionsTitle(){
+        return $('p=Navigate your')
+    }
+
+
+
     public async clickOnAwardsandRecognitionsButton(){
         await this.awardsAndRecognitionsButton.waitForExist()
         await this.awardsAndRecognitionsButton.click()
@@ -85,6 +108,39 @@ public async verifyTheWayWeActExpands(){
     await this.clickOntheWayWeActButton()
   
 
+}
+
+public async clickOnJoinOurTeamButton(){
+    await this.joinOurTeamButton.waitForExist()
+    await this.joinOurTeamButton.click()
+
+}
+
+public async verifyJoinOurTeamButtonWorks(){
+    await this.clickOnJoinOurTeamButton()
+    await Environment.checkPageSuccessfullyLoaded()
+    await expect(this.careerTitle).toHaveText('Join us and work in a creative & innovative environment')
+    await Environment.waiForSeconds(3)
+    await browser.back()
+    await Environment.waiForSeconds(3)
+    await this.companyTitle.waitForDisplayed()
+    //await expect(this.companyTitle).toHaveText('A solid track record'+ '\n' + 'of delivering high-quality services')
+}
+
+public async clickSeeAllPositionsButton(){
+    await this.seeAllOpenPositionsButton.waitForDisplayed()
+    await this.seeAllOpenPositionsButton.click()
+
+}
+
+public async VerifySeeAllPositionButtonWorks(){
+    await Environment.loadHomePage()
+    await Environment.setFullHDResolution()
+    await navigateDesktop.goToCompanyPage()
+    await this.clickSeeAllPositionsButton()
+    await Environment.checkPageSuccessfullyLoaded()
+    await expect(this.AllPositionsTitle).toHaveText('Navigate your career towards success')
+    await Environment.waiForSeconds(3)
 }
 }
 

@@ -115,6 +115,14 @@ describe('Test elements on Company page', ()=>{
     it('Verify The way we act section expands', async()=>{
         await CompanyElements.verifyTheWayWeActExpands()
     })
+
+    it('Verify Join Our Team Button works properly', async()=>{
+        await CompanyElements.verifyJoinOurTeamButtonWorks()
+    })
+
+     it('Verify See All Open Positions button works properly', async()=>{
+        await CompanyElements.VerifySeeAllPositionButtonWorks()
+    })
 })
 
 
