@@ -8,6 +8,10 @@ class navigateDesktop extends Base {
     public get BlogCategoriesButton(){
         return $('h3=Categories')
     }
+
+    public get BlogTagsButton(){
+        return $('h3=Tags')
+    }
  
     public get companyTitle(){
         return $('p=A solid')
@@ -16,6 +20,7 @@ class navigateDesktop extends Base {
     public get careersButton(){
         return $('aria/Careers')
     }
+
 
     public get blogCategory2D(){
         return $('aria/2D Design')
@@ -39,6 +44,18 @@ class navigateDesktop extends Base {
 
     public get blogCategoryPython(){
         return $('aria/Python')
+    }
+
+    public get blogTag1(){
+        return $('aria/tag 1')
+    }
+
+    public get blogTag2(){
+        return $('aria/tag 2')
+    }
+
+    public get blogTag3(){
+        return $('aria/tag 3')
     }
 
 
@@ -167,7 +184,7 @@ class navigateDesktop extends Base {
         await this.BlogCategoriesButton.waitForDisplayed()
         await this.BlogCategoriesButton.click()
     }
-    public async expandBlogCategories(){
+    public async verifyCategoriesAreClickable(){
         await this.clickBlogCategoriesButton()
         await this.blogCategory2D.waitForDisplayed()
         await expect(this.blogCategory2D).toHaveText('2D Design')
@@ -189,6 +206,28 @@ class navigateDesktop extends Base {
         await this.blogCategoryPython.isClickable()
 
     }
+
+    public async clickBlogTagsButton(){
+        await this.BlogTagsButton.waitForDisplayed()
+        await this.BlogTagsButton.click()
+    }
+
+    public async verifyBlogTagsAreClickable(){
+        await this.clickBlogTagsButton()
+        await this.blogTag1.waitForDisplayed()
+        await expect(this.blogTag1).toHaveText('tag 1')
+        await this.blogTag1.isClickable()
+        await this.blogTag2.waitForDisplayed()
+        await expect(this.blogTag2).toHaveText('tag 2')
+        await this.blogTag2.isClickable()
+        await this.blogTag3.waitForDisplayed()
+        await expect(this.blogTag3).toHaveText('tag 3')
+        await this.blogTag3.isClickable()
+        
+    
+    }
+
+
 }
 export default new navigateDesktop()
  

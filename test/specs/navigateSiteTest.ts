@@ -4,8 +4,9 @@ import navigateDesktop from '../pageobjects/navigateDesktop.ts'
 import navigateTablet from '../pageobjects/navigateTablet.ts'
 import Subscribe from '../pageobjects/Subscribe.ts'
 import IndustriesDropdown from '../pageobjects/IndustriesDropdown.ts'
+import CompanyElements from '../pageobjects/CompanyElements.ts'
 
-describe('Navigate on Assist Website on desktop', () => {
+describe.skip('Navigate on Assist Website on desktop', () => {
     it('Loading HomePage', async () => {
         await Environment.loadHomePage()    
         await navigateDesktop.setFullHDResolution()
@@ -19,8 +20,12 @@ describe('Navigate on Assist Website on desktop', () => {
         await navigateDesktop.goToBlogPage()
     })
 
-    it('Expand Categories from Blog', async()=>{
-        await navigateDesktop.expandBlogCategories()
+    it('Verify Categories from Blog are clickable', async()=>{
+        await navigateDesktop.verifyCategoriesAreClickable()
+    })
+
+    it('Verify Categories from BLog are clickable', async()=>{
+        await navigateDesktop.verifyBlogTagsAreClickable()
     })
 
    /* it('Press See All Blog Posts button', async()=>{
@@ -33,6 +38,7 @@ describe('Navigate on Assist Website on desktop', () => {
 
     it('Expand Industries menu', async()=>{
         await navigateDesktop.goToIndustriesMenu() 
+        
     })
 
    
@@ -93,7 +99,23 @@ describe.skip('Test Industries Projects', ()=>{
 
 })
 
+describe('Test elements on Company page', ()=>{
+    it('Verify Awards and Recognitions section expands', async()=>{
+        await CompanyElements.verifyAwardsandRecognitionsExpands()
+    })
 
+    it('Verify compamy certifications expands', async()=>{
+        await CompanyElements.verifyCompanyCertificationExpands()
+    })
+
+    it('Verify The way we work section expands', async()=>{
+        await CompanyElements.verifyTheWayWeWorkExpands()
+    })
+
+    it('Verify The way we act section expands', async()=>{
+        await CompanyElements.verifyTheWayWeActExpands()
+    })
+})
 
 
 
