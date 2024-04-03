@@ -5,8 +5,9 @@ import navigateTablet from '../pageobjects/navigateTablet.ts'
 import Subscribe from '../pageobjects/Subscribe.ts'
 import IndustriesDropdown from '../pageobjects/IndustriesDropdown.ts'
 import CompanyElements from '../pageobjects/CompanyElements.ts'
+import CareersElements from '../pageobjects/CareersElements.ts'
 
-describe.skip('Navigate on Assist Website on desktop', () => {
+describe('Navigate on Assist Website on desktop', () => {
     it('Loading HomePage', async () => {
         await Environment.loadHomePage()    
         await navigateDesktop.setFullHDResolution()
@@ -28,10 +29,6 @@ describe.skip('Navigate on Assist Website on desktop', () => {
         await navigateDesktop.verifyBlogTagsAreClickable()
     })
 
-   /* it('Press See All Blog Posts button', async()=>{
-        await navigateDesktop.clickSeeAllBlogPostsButton()
-    })*/
-
     it('Expand Services menu', async()=>{
         await navigateDesktop.goToServicesMenu()
     })
@@ -40,17 +37,13 @@ describe.skip('Navigate on Assist Website on desktop', () => {
         await navigateDesktop.goToIndustriesMenu() 
         
     })
-
-   
-
- 
 })
 
-describe.skip('Navigate on Assist Website tablet', ()=> {
+describe('Navigate on Assist Website tablet', ()=> {
     it('Loading Home Page on tablet', async()=>{
         await Environment.loadHomePage()
         await navigateTablet.setTabletResolution()
-        
+
     })
 
     it('Go to Company page on tablet', async() =>{
@@ -71,19 +64,19 @@ describe.skip('Navigate on Assist Website tablet', ()=> {
     })
 })
 
-describe.skip('Press Join our team button', () => {
+describe('Press Join our team button', () => {
     it('Press Join our team', async()=>{
         await JoinOurTeam.clickOnJoinOurTeamButton()
     })
 })
 
-describe.skip('Test Subscribe Form from Blog page', () => {
+describe('Test Subscribe Form from Blog page', () => {
     it('Subscribe with invalid email address', async()=>{
         await Subscribe.subscribeWithInvalidEmail()
     })
 })
 
-describe.skip('Test Industries Projects', ()=>{
+describe('Test Industries Projects', ()=>{
     it('See Automotive Projects', async() => {
         await IndustriesDropdown.seeAutomotiveProjects()
     })
@@ -125,15 +118,51 @@ describe('Test elements on Company page', ()=>{
     })
 })
 
+describe('Test elements on Careers Page', () => {
+    it('Verify Explore open positions button works properly', async()=>{
+        await CareersElements.goToAllJobsPage()
+    })
+
+   it('Verify First Job Single Page opens properly', async()=>{
+        await CareersElements.gotoFirstJobPage()
+    })
+
+    it('Verify Second Job Single Page opens properly', async()=>{
+        await CareersElements.gotoSecondJobPage()
+    })
+
+    it('Verify Third Job Single Page opens properly', async()=>{
+        await CareersElements.gotoThirdJobPage()
+    })
+
+    it('Verify See more open positions button works', async()=>{
+        await CareersElements.verifySeeMoreOpenPositionsButton()
+    })
+
+    it('Verify user cannot insert invalid email', async()=>{
+        await CareersElements.submitWithInvalidName()
+    })
+
+    it('Verify user cannot insert invalid phone number', async()=>{
+        await CareersElements.submitWithInvalidPhoneNumber()
+    })
+
+    it('Verify user cannot insert invalid email address', async()=>{
+        await CareersElements.submitWithInvalidEmail()
+    })
+
+    it('Verify user cannot insert invalid specialization name', async()=>{
+        await CareersElements.submitWithInvalidSpecialization()
+    })
+
+    it('Verify user cannot insert invalid additional information', async()=>{
+        await CareersElements.submitWithInvalidAdditionalInformation()
+    })
+
+})
 
 
-    /*it('Go to Careers page', async()=>{
-        await navigateDesktop.clickOnCareersButton()
-        await navigateDesktop.waiForSeconds(1)
-        await navigateDesktop.checkCareersUrl()
 
-        
-    })*/
    
 
 

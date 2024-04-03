@@ -71,6 +71,8 @@ class Company extends Base{
          await this.clickOnAwardsandRecognitionsButton()
          await this.awardsAndRecognitionsParagraph.waitForDisplayed()
          await expect(this.awardsAndRecognitionsParagraph).toHaveText(expect.stringContaining('Our team consistently meets and exceeds our clients’ expectations by')) 
+         await this.clickOnAwardsandRecognitionsButton()
+         await expect(this.awardsAndRecognitionsParagraph).not.toBeFocused()
     }
 
    public async clickOnCompanyCertificationsButton(){
@@ -82,7 +84,10 @@ public async verifyCompanyCertificationExpands(){
     await this.clickOnCompanyCertificationsButton()
     await this.companyCertificationParagraph.waitForDisplayed()
     await expect(this.companyCertificationParagraph).toHaveText(expect.stringContaining('The company currently has over 300 employees. ASSIST Software'))
+    await this.clickOnCompanyCertificationsButton()
+    await expect(this.companyCertificationParagraph).not.toBeFocused()
 }
+
 public async clickOnTheWayWeWorkButton(){
     await this.theWayWeWorkButton.waitForDisplayed()
     await this.theWayWeWorkButton.click()
@@ -92,12 +97,15 @@ public async verifyTheWayWeWorkExpands(){
     await this.clickOnTheWayWeWorkButton()
     await this.theWayWeWorkParagraph.waitForDisplayed()
     await expect(this.theWayWeWorkParagraph).toHaveText(expect.stringContaining('Curiosity and innovation are pre-requisites. Listening is a'))
+    await this.clickOnTheWayWeWorkButton()
+    await expect(this.theWayWeWorkParagraph).not.toBeFocused()
 
 }
 
 public async clickOntheWayWeActButton(){
     await this.theWayWeActButton.waitForExist()
     await this.theWayWeActButton.click()
+
 
 }
 
@@ -106,8 +114,7 @@ public async verifyTheWayWeActExpands(){
     await this.theWayWeActParagraph.waitForDisplayed()
     await expect(this.theWayWeActParagraph).toHaveText(expect.stringContaining('Curiosity and innovation are pre-requisites. Listening is a'))
     await this.clickOntheWayWeActButton()
-  
-
+    await expect(this.theWayWeActParagraph).not.toBeFocused()
 }
 
 public async clickOnJoinOurTeamButton(){
@@ -124,7 +131,8 @@ public async verifyJoinOurTeamButtonWorks(){
     await browser.back()
     await Environment.waiForSeconds(3)
     await this.companyTitle.waitForDisplayed()
-    //await expect(this.companyTitle).toHaveText('A solid track record'+ '\n' + 'of delivering high-quality services')
+    await this.companyTitle.scrollIntoView()
+    await expect(this.companyTitle).toHaveText('A solid track record'+ '\n' + 'of delivering high-quality services')
 }
 
 public async clickSeeAllPositionsButton(){

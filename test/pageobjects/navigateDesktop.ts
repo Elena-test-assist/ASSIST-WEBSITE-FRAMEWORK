@@ -109,7 +109,7 @@ class navigateDesktop extends Base {
     
  
     public async clickOnCareersButton(){
-        await this.careersButton.waitForDisplayed
+        await this.careersButton.waitForDisplayed()
         await this.careersButton.click()
     }
  
